@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="bck">
         <transition name="bounce">
             <el-card class="box-card" v-if="show">
                 <div slot="header" class="clearfix">
@@ -26,9 +26,6 @@
 </template>
 
 <script>
-    window.onload=function(){
-        document.getElementById("btn_transition").click();
-    }
     export default {
         name:'Login',
         data() {
@@ -37,17 +34,24 @@
                 input_password: '',
                 show:false
             }
+        },
+        mounted(){
+            document.getElementById("btn_transition").click();
         }
     }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-    body {
-        background-image: url("../assets/timg.jpg");
+    /* #bck {
+        height: 100%;
+        width: 100%;
+        background-image: url("../../assets/timg.jpg");
         background-repeat: no-repeat;
 	    background-size: 100%;
-    }
+        position: absolute;
+        z-index: -1;
+    } */
     .box-card {
         margin-left: 900px;
         width: 30%;
