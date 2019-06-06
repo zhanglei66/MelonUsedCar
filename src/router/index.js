@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import userLogin from '@/components/user/login'
 import userhead from '@/components/user/head'
 import sellcar from '@/components/user/sellcar'
+import sellcarform1 from '@/components/user/sellcarform1'
+import sellcarform2 from '@/components/user/sellcarform2'
+import sellcarform3 from '@/components/user/sellcarform3'
 import adminHome from '@/components/admin/home'
 import adminHead from '@/components/admin/head'
 
@@ -24,6 +27,23 @@ export default new Router({
           path: 'sellcar',
           name: 'sellcar',
           component: sellcar,
+          children:[
+            {
+              path: 'sellcarform1',
+              name: 'sellcarform1',
+              component: sellcarform1
+            },
+            {
+              path: 'sellcarform2',
+              name: 'sellcarform2',
+              component: sellcarform2
+            },
+            {
+              path: 'sellcarform3',
+              name: 'sellcarform3',
+              component: sellcarform3
+            }
+          ]
         }
       ]
     },{
