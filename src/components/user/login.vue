@@ -12,6 +12,14 @@
                     <div>
                         <el-input id="password" placeholder="请输入密码" v-model="input_password"></el-input>
                     </div>
+                    <div id="verification">
+                        <el-col :span="6">
+                            <img src="" alt="" style="width:20%">
+                        </el-col>
+                        <el-col :span="18">
+                            <el-input v-model="verification" placeholder="请输入验证码"></el-input>
+                        </el-col>
+                    </div>
                     <div>
                         <el-button class="btn" id="btn_login" type="primary" plain>登陆</el-button>
                     </div>
@@ -63,6 +71,10 @@
     #account {
         width: 90%;
         margin-top: 10px;
+    }
+    #verification {
+        margin-top: 20px;
+        width: 90%;
     }
     .btn {
         width: 90%;   
