@@ -21,7 +21,7 @@
                         </el-col>
                     </div>
                     <div>
-                        <el-button class="btn" id="btn_login" type="primary" plain>登陆</el-button>
+                        <el-button class="btn" id="btn_login" @click="login()" type="primary" plain>登陆</el-button>
                     </div>
                     <div>
                         <el-button class="btn" id="btn_signin" type="success" plain>注册</el-button>
@@ -40,26 +40,39 @@
             return {
                 input_account: '',
                 input_password: '',
+                verification:'',
                 show:false
             }
         },
         mounted(){
             document.getElementById("btn_transition").click();
+        },
+        methods: {
+            login: function() {
+                this.$axios.get('')
+                .then(function(response) {
+                    console.log("success");
+                })
+                .catch(function(error) {
+                    console.log("error");
+                })
+            }
         }
+        
     }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-    /* #bck {
+    #bck {
         height: 100%;
         width: 100%;
-        background-image: url("../../assets/timg.jpg");
+        background-image: url("../../assets/car.gif");
         background-repeat: no-repeat;
 	    background-size: 100%;
-        position: absolute;
+        position: fixed;
         z-index: -1;
-    } */
+    }
     .box-card {
         margin-left: 900px;
         width: 30%;

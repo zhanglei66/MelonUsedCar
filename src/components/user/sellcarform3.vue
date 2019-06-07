@@ -1,6 +1,7 @@
 <template>
     <div style="text-align:center">
         <div>
+            <label for="">正面照片</label>
             <el-upload
                 action=""
                 list-type="picture-card"
@@ -14,6 +15,7 @@
             </el-dialog>    
         </div>
         <div style="margin-top:20px;">
+            <label for="">其他照片</label>
             <el-upload
                 action=""
                 list-type="picture-card"

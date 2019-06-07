@@ -1,15 +1,18 @@
 <template>
     <div style="width:460px; margin: 0 auto;">
       <el-form ref="form" :model="form" label-width="80px">
+        <el-form-item label="车牌">
+          <el-input v-model="form.carnum"></el-input>
+        </el-form-item>
         <el-form-item label="车型">
           <el-col :span="12">
-            <el-select v-model="form.region" placeholder="品牌">
+            <el-select v-model="form.carmodel1" placeholder="品牌">
               <el-option label="区域一" value="shanghai"></el-option>
               <el-option label="区域二" value="beijing"></el-option>
             </el-select>
           </el-col>
           <el-col :span="12">
-            <el-select v-model="form.region" placeholder="车系">
+            <el-select v-model="form.carmodel2" placeholder="车系">
               <el-option label="区域一" value="shanghai"></el-option>
               <el-option label="区域二" value="beijing"></el-option>
             </el-select>
@@ -17,39 +20,21 @@
         </el-form-item>
         <el-form-item label="上牌时间">
           <el-col :span="24">
-            <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
+            <el-date-picker type="date" placeholder="选择日期" v-model="form.cardate" style="width: 100%;"></el-date-picker>
           </el-col>
         </el-form-item>
-        <!-- <el-form-item label="即时配送">
-          <el-switch v-model="form.delivery"></el-switch>
-        </el-form-item>
-        <el-form-item label="活动性质">
-          <el-checkbox-group v-model="form.type">
-            <el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
-            <el-checkbox label="地推活动" name="type"></el-checkbox>
-            <el-checkbox label="线下主题活动" name="type"></el-checkbox>
-            <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
-          </el-checkbox-group>
-        </el-form-item>
-        <el-form-item label="特殊资源">
-          <el-radio-group v-model="form.resource">
-            <el-radio label="线上品牌商赞助"></el-radio>
-            <el-radio label="线下场地免费"></el-radio>
-          </el-radio-group>
-        </el-form-item> -->
         <el-form-item label="行驶里程">
-          <el-input v-model="form.desc"></el-input>
+          <el-input v-model="form.cardistance"></el-input>
         </el-form-item>
         <el-form-item label="排量">
-            <el-input v-model="form.displacement"></el-input>
+            <el-input v-model="form.cardisplacement"></el-input>
         </el-form-item>
         <el-form-item label="二手价">
-            <el-input v-model="form.price"></el-input>
+            <el-input v-model="form.carprice"></el-input>
         </el-form-item>
-        <!-- <el-form-item>
-          <el-button type="primary" @click="onSubmit">立即创建</el-button>
-          <el-button>取消</el-button>
-        </el-form-item> -->
+        <el-form-item label="联系电话">
+            <el-input v-model="form.telphone"></el-input>
+        </el-form-item>
       </el-form>
     </div>
 </template>
@@ -59,13 +44,13 @@ export default {
   data() {
       return {
         form: {
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          desc: '',
-          displacement: '',
-          price: ''
+          carnum: '',
+          carmodel1: '',
+          carmodel2: '',
+          cardate: '',
+          cardisplacement: '',
+          carprice: '',
+          telphone:''
         }
       }
   },

@@ -24,15 +24,10 @@ export default {
         form: {
           appointment_time: true,
           address: ''
-        },
-        appointment_time: true
+        }
       }
   },
-
   methods: {
-    onSubmit() {
-        console.log('submit!');
-    }
   }
 };
 </script>
