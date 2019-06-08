@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import userLogin from '@/components/user/login'
 import userhead from '@/components/user/head'
+import homepage from '@/components/user/homepage'
 import sellcar from '@/components/user/sellcar'
 import sellcarform1 from '@/components/user/sellcarform1'
 import sellcarform2 from '@/components/user/sellcarform2'
@@ -18,6 +19,11 @@ export default new Router({
       name: 'user',
       component: userhead,
       children: [
+        {
+          path: 'homepage',
+          name: 'homepage',
+          component: homepage,
+        },
         {
           path: 'login',
           name: 'userLogin',
