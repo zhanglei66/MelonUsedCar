@@ -10,7 +10,7 @@
       active-text-color="#ffd04b"
       :router="true"
     > 
-      <el-menu-item index="1" id="item_first">首页</el-menu-item>
+      <el-menu-item index="/user/homepage" id="item_first">首页</el-menu-item>
       <el-menu-item index="/user/buycar">我要买车</el-menu-item>
       <el-menu-item index="/user/sellcar/sellcarform1">我要卖车</el-menu-item>
     </el-menu>

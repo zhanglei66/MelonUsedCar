@@ -49,9 +49,10 @@
         },
         methods: {
             login: function() {
-                this.$axios.get('')
+                this.$axios.get('/login/1/1')
                 .then(function(response) {
                     console.log("success");
+                    console.log(response.data.data.name)
                 })
                 .catch(function(error) {
                     console.log("error");

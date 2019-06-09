@@ -8,6 +8,8 @@ import echarts from 'echarts'
 import router from './router'
 import axios from 'axios'
 
+import './mock/index'
+
 Vue.prototype.$echatrts = echarts
 Vue.config.productionTip = false
 Vue.use(ElementUI)
