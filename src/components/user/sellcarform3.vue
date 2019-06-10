@@ -3,11 +3,12 @@
         <div>
             <label for="">正面照片</label>
             <el-upload
-                action=""
+                name="image"
+                action="http://diamond.creatshare.com/upload"
                 list-type="picture-card"
                 :on-preview="handlePictureCardPreview"
                 :on-remove="handleRemove"
-                :auto-upload="false">
+                >
                 <i class="el-icon-plus"></i>
             </el-upload>
             <el-dialog :visible.sync="dialogVisible">

@@ -7,10 +7,10 @@
                 </div>
                 <div>
                     <div>
-                        <el-input prefix-icon="" id="account" v-model="input_account" placeholder="请输入账号"></el-input>
+                        <el-input prefix-icon="" style="width:90%" id="account" v-model="input_account" placeholder="请输入账号"></el-input>
                     </div>
                     <div>
-                        <el-input id="password" placeholder="请输入密码" v-model="input_password"></el-input>
+                        <el-input id="password" style="margin-top: 20px; width: 90%;" placeholder="请输入密码" v-model="input_password"></el-input>
                     </div>
                     <div id="verification">
                         <el-col :span="6">
@@ -64,7 +64,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
     #bck {
         height: 100%;
         width: 100%;
@@ -77,10 +77,6 @@
     .box-card {
         margin-left: 900px;
         width: 30%;
-    }
-    #password {
-        margin-top: 20px; 
-        width: 90%;
     }
     #account {
         width: 90%;

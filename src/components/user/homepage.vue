@@ -1,19 +1,19 @@
 <template>
   <div>
-    <div>
-      <el-carousel :interval="4000" type="card" height="350px">
+    <div style="width:80%; margin: 0 auto">
+      <el-carousel :interval="4000" type="card" height="300px">
         <el-carousel-item v-for="item in 5" :key="item">
           <img src="../../assets/timg.jpg" style="width:100%;" alt="">
         </el-carousel-item>
       </el-carousel>
     </div>
-    <div style="width:1400px; height:200px; margin: 0 auto;">
+    <div style="width:1300px; height:200px; margin: 0 auto;">
       <el-card class="box-card" style="height:100%">
         <h2>Offer二手车</h2>
         <h3>致力于打造安全、可靠、服务一流的二手车交易市场</h3>
       </el-card>
     </div>
-    <div style="width:1300px; margin:0 auto">
+    <div style="width:1150px; margin:0 auto">
       <div>
         <h2>精选推荐</h2>
       </div>
@@ -22,7 +22,19 @@
           <el-card :body-style="{ padding: '0px' }">
             <img src="../../assets/timg.jpg" class="image">
             <div style="padding: 14px;">
-              <span>兰博基尼</span>
+              <span>车型</span>
+              <div class="bottom clearfix">
+                <p>上牌时间</p>
+                <p>price</p>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+        <el-col :span="6">
+          <el-card :body-style="{ padding: '0px' }">
+            <img src="../../assets/timg.jpg" class="image">
+            <div style="padding: 14px;">
+              <span>车型</span>
               <div class="bottom clearfix">
                 <p>price</p>
               </div>
@@ -33,7 +45,7 @@
           <el-card :body-style="{ padding: '0px' }">
             <img src="../../assets/timg.jpg" class="image">
             <div style="padding: 14px;">
-              <span>兰博基尼</span>
+              <span>车型</span>
               <div class="bottom clearfix">
                 <p>price</p>
               </div>
@@ -44,18 +56,7 @@
           <el-card :body-style="{ padding: '0px' }">
             <img src="../../assets/timg.jpg" class="image">
             <div style="padding: 14px;">
-              <span>兰博基尼</span>
-              <div class="bottom clearfix">
-                <p>price</p>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
-        <el-col :span="6">
-          <el-card :body-style="{ padding: '0px' }">
-            <img src="../../assets/timg.jpg" class="image">
-            <div style="padding: 14px;">
-              <span>兰博基尼</span>
+              <span>车型</span>
               <div class="bottom clearfix">
                 <p>price</p>
               </div>
@@ -68,7 +69,7 @@
           <el-card :body-style="{ padding: '0px' }">
             <img src="../../assets/timg.jpg" class="image">
             <div style="padding: 14px;">
-              <span>兰博基尼</span>
+              <span>车型</span>
               <div class="bottom clearfix">
                 <p>price</p>
               </div>
@@ -79,7 +80,7 @@
           <el-card :body-style="{ padding: '0px' }">
             <img src="../../assets/timg.jpg" class="image">
             <div style="padding: 14px;">
-              <span>兰博基尼</span>
+              <span>车型</span>
               <div class="bottom clearfix">
                 <p>price</p>
               </div>
@@ -90,7 +91,7 @@
           <el-card :body-style="{ padding: '0px' }">
             <img src="../../assets/timg.jpg" class="image">
             <div style="padding: 14px;">
-              <span>兰博基尼</span>
+              <span>车型</span>
               <div class="bottom clearfix">
                 <p>price</p>
               </div>
@@ -101,7 +102,7 @@
           <el-card :body-style="{ padding: '0px' }">
             <img src="../../assets/timg.jpg" class="image">
             <div style="padding: 14px;">
-              <span>兰博基尼</span>
+              <span>车型</span>
               <div class="bottom clearfix">
                 <p>price</p>
               </div>
@@ -124,7 +125,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
   .el-carousel__item h3 {
     color: #475669;
     font-size: 14px;
