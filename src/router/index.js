@@ -4,8 +4,8 @@ import userLogin from '@/components/user/login'
 import userhead from '@/components/user/head'
 import homepage from '@/components/user/homepage'
 import buycar from '@/components/user/buycar'
-import sellcar from '@/components/user/sellcar'
 import details from '@/components/user/details'
+
 import sellcarform1 from '@/components/user/sellcarform1'
 import sellcarform2 from '@/components/user/sellcarform2'
 import sellcarform3 from '@/components/user/sellcarform3'
@@ -42,29 +42,23 @@ export default new Router({
           component: details,
         },
         {
-          path: 'sellcar',
-          name: 'sellcar',
-          component: sellcar,
-          children:[
-            {
-              path: 'sellcarform1',
-              name: 'sellcarform1',
-              component: sellcarform1
-            },
-            {
-              path: 'sellcarform2',
-              name: 'sellcarform2',
-              component: sellcarform2
-            },
-            {
-              path: 'sellcarform3',
-              name: 'sellcarform3',
-              component: sellcarform3
-            }
-          ]
+          path: 'sellcarform1',
+          name: 'sellcarform1',
+          component: sellcarform1
+        },
+        {
+          path: 'sellcarform2',
+          name: 'sellcarform2',
+          component: sellcarform2
+        },
+        {
+          path: 'sellcarform3',
+          name: 'sellcarform3',
+          component: sellcarform3
         }
       ]
-    },{
+    }, 
+    {
       path: '/admin/',
       name: 'admin',
       component: adminHead,

@@ -1,5 +1,13 @@
 <template>
-    <div style="text-align:center">
+  <div>
+    <div>
+        <el-steps style="margin-top:40px" :active="active" finish-status="success" :alignCenter="true">
+          <el-step title="步骤 1"></el-step>
+          <el-step title="步骤 2"></el-step>
+          <el-step title="步骤 3"></el-step>
+        </el-steps>
+    </div>
+    <div style="text-align:center; margin-top: 20px;">
         <div>
             <label for="">正面照片</label>
             <el-upload
@@ -8,6 +16,7 @@
                 list-type="picture-card"
                 :on-preview="handlePictureCardPreview"
                 :on-remove="handleRemove"
+                :on-success="handleAvatarSuccess"
                 >
                 <i class="el-icon-plus"></i>
             </el-upload>
@@ -29,15 +38,22 @@
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>    
         </div>
+        <div><button @click="uploadall"></button></div>
     </div>
+    <div style="text-align:center">
+      <el-button style="margin-top: 12px;" @click="next">下一步</el-button>
+    </div>
+  </div>
 </template>
 
 <script>
+  import form1 from './sellcarform1'
   export default {
     data() {
       return {
         dialogImageUrl: '',
-        dialogVisible: false
+        dialogVisible: false,
+        active: 2
       };
     },
     methods: {
@@ -47,6 +63,17 @@
       handlePictureCardPreview(file) {
         this.dialogImageUrl = file.url;
         this.dialogVisible = true;
+      },
+      handleAvatarSuccess: function(response, file, fileList) {
+        console.log("success")
+        console.log(response.data.imageUrl);
+      },
+      uploadall: function() {
+        console.log(form1.data().form.carnum);
+      },
+      next() {
+        if (this.active++ > 2) this.active = 0;
+        // this.$router.push("/user/sellcarform");
       }
     }
   }

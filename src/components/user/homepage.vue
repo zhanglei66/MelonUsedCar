@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div style="width:80%; margin: 0 auto">
+    <div style="width:80%; margin:20px auto 0 auto">
       <el-carousel :interval="4000" type="card" height="300px">
-        <el-carousel-item v-for="item in 5" :key="item">
-          <img src="../../assets/timg.jpg" style="width:100%;" alt="">
+        <el-carousel-item v-for="site in sites" :key="site.src_img">
+          <img :src="site.src_img" style="width:100%;" alt="">
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -19,8 +19,8 @@
       </div>
       <el-row :gutter="20">
         <el-col :span="6">
-          <el-card :body-style="{ padding: '0px' }">
-            <img src="../../assets/timg.jpg" class="image">
+          <el-card shadow="hover" :body-style="{ padding: '0px' }">
+            <img src='../../assets/timg.jpg' class="image">
             <div style="padding: 14px;">
               <span>车型</span>
               <div class="bottom clearfix">
@@ -31,8 +31,8 @@
           </el-card>
         </el-col>
         <el-col :span="6">
-          <el-card :body-style="{ padding: '0px' }">
-            <img src="../../assets/timg.jpg" class="image">
+          <el-card shadow="hover" :body-style="{ padding: '0px' }">
+            <img src='../../assets/timg.jpg' class="image">
             <div style="padding: 14px;">
               <span>车型</span>
               <div class="bottom clearfix">
@@ -42,8 +42,8 @@
           </el-card>
         </el-col>
         <el-col :span="6">
-          <el-card :body-style="{ padding: '0px' }">
-            <img src="../../assets/timg.jpg" class="image">
+          <el-card shadow="hover" :body-style="{ padding: '0px' }">
+            <img src='../../assets/timg.jpg' class="image">
             <div style="padding: 14px;">
               <span>车型</span>
               <div class="bottom clearfix">
@@ -53,8 +53,8 @@
           </el-card>
         </el-col>
         <el-col :span="6">
-          <el-card :body-style="{ padding: '0px' }">
-            <img src="../../assets/timg.jpg" class="image">
+          <el-card shadow="hover" :body-style="{ padding: '0px' }">
+            <img src='../../assets/timg.jpg' class="image">
             <div style="padding: 14px;">
               <span>车型</span>
               <div class="bottom clearfix">
@@ -66,8 +66,8 @@
       </el-row>
       <el-row :gutter="20">
         <el-col :span="6">
-          <el-card :body-style="{ padding: '0px' }">
-            <img src="../../assets/timg.jpg" class="image">
+          <el-card shadow="hover" :body-style="{ padding: '0px' }">
+            <img src='../../assets/timg.jpg' class="image">
             <div style="padding: 14px;">
               <span>车型</span>
               <div class="bottom clearfix">
@@ -77,8 +77,8 @@
           </el-card>
         </el-col>
         <el-col :span="6">
-          <el-card :body-style="{ padding: '0px' }">
-            <img src="../../assets/timg.jpg" class="image">
+          <el-card shadow="hover" :body-style="{ padding: '0px' }">
+            <img src='../../assets/timg.jpg' class="image">
             <div style="padding: 14px;">
               <span>车型</span>
               <div class="bottom clearfix">
@@ -88,8 +88,8 @@
           </el-card>
         </el-col>
         <el-col :span="6">
-          <el-card :body-style="{ padding: '0px' }">
-            <img src="../../assets/timg.jpg" class="image">
+          <el-card shadow="hover" :body-style="{ padding: '0px' }">
+            <img src='../../assets/timg.jpg' class="image">
             <div style="padding: 14px;">
               <span>车型</span>
               <div class="bottom clearfix">
@@ -99,8 +99,8 @@
           </el-card>
         </el-col>
         <el-col :span="6">
-          <el-card :body-style="{ padding: '0px' }">
-            <img src="../../assets/timg.jpg" class="image">
+          <el-card shadow="hover" :body-style="{ padding: '0px' }">
+            <img src='../../assets/timg.jpg' class="image">
             <div style="padding: 14px;">
               <span>车型</span>
               <div class="bottom clearfix">
@@ -118,6 +118,13 @@
 export default {
   data() {
     return {
+      sites: [
+        {src_img:require('../../assets/timg.jpg')},
+        {src_img:require('../../assets/car2.jpg')},
+        {src_img:require('../../assets/car3.jpg')},
+        {src_img:require('../../assets/car4.jpg')},
+        {src_img:require('../../assets/car5.jpg')},
+      ],
       currentDate: new Date()
     };
   }

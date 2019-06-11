@@ -20,16 +20,6 @@ export default {
   data() {
       return {
         active: 0,
-        form: {
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
-        }
       }
   },
 
@@ -42,9 +32,6 @@ export default {
       else if(this.active == 2) {
         this.$router.push("/user/sellcar/sellcarform3")
       }
-    },
-    onSubmit() {
-        console.log('submit!');
     }
   }
 };
