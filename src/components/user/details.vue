@@ -25,7 +25,8 @@
 							<h1>车主报价：</h1>
 						</div>
 						<div style="margin-top:60px;">
-							<el-button type="success">购买</el-button>
+							<el-button type="success">预约</el-button>
+							<el-button type="primary">收藏</el-button>
 						</div>
 					</div>
 				</el-col>
@@ -121,7 +122,37 @@
 							<span>底盘及制动</span>
 						</div>
 						<div>
-							
+							<table border="1">
+								<tr>
+									<th>驱动方式</th>
+									
+								</tr>
+								<tr>
+									<th>助力类型</th>
+								</tr>
+								<tr>
+									<th>前悬挂类型</th>
+								</tr>
+								<tr>
+									<th>后悬挂类型</th>
+								</tr>
+								<tr>
+									<th>前制动类型</th>
+								</tr>
+								<tr>
+									<th>后制动类型</th>
+								</tr>
+								<tr>
+									<th>驻车制动类型	</th>
+								</tr>
+								<tr>
+									<th>前轮胎规格</th>
+								</tr>
+								<tr>
+									<th>后轮胎规格</th>
+								</tr>
+								
+							</table>
 						</div>
 					</el-card>
 				</el-col>

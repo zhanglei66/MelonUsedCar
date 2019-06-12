@@ -13,7 +13,8 @@
       > 
         <el-menu-item index="/user/homepage" id="item_first">首页</el-menu-item>
         <el-menu-item index="/user/buycar">我要买车</el-menu-item>
-        <el-menu-item index="/user/sellcarform1">我要卖车</el-menu-item>
+        <el-menu-item index="/user/sellcarform">我要卖车</el-menu-item>
+        <el-menu-item index="/user/login">登陆</el-menu-item>
       </el-menu>
     </div>
     <router-view></router-view>

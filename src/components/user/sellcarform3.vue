@@ -38,7 +38,6 @@
                 <img width="100%" :src="dialogImageUrl" alt="">
             </el-dialog>    
         </div>
-        <div><button @click="uploadall"></button></div>
     </div>
     <div style="text-align:center">
       <el-button style="margin-top: 12px;" @click="next">下一步</el-button>
@@ -47,7 +46,7 @@
 </template>
 
 <script>
-  import form1 from './sellcarform1'
+  import vm from "../../event";
   export default {
     data() {
       return {
@@ -73,9 +72,16 @@
       },
       next() {
         if (this.active++ > 2) this.active = 0;
+        this.receive();
         // this.$router.push("/user/sellcarform");
-      }
+      },
+      receive:function() {
+        vm.$on('myFun',(form)=>{
+              console.log(form);
+          })
+      },
     }
+    
   }
 </script>
 

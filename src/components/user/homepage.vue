@@ -18,53 +18,19 @@
         <h2>精选推荐</h2>
       </div>
       <el-row :gutter="20">
-        <el-col :span="6">
+        <el-col :span="6" v-for="item in items" :key="item.id">
           <el-card shadow="hover" :body-style="{ padding: '0px' }">
-            <img src='../../assets/timg.jpg' class="image">
+            <img :src='item.src_img' class="image">
             <div style="padding: 14px;">
-              <span>车型</span>
+              <span>{{item.type}}</span>
               <div class="bottom clearfix">
-                <p>上牌时间</p>
-                <p>price</p>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
-        <el-col :span="6">
-          <el-card shadow="hover" :body-style="{ padding: '0px' }">
-            <img src='../../assets/timg.jpg' class="image">
-            <div style="padding: 14px;">
-              <span>车型</span>
-              <div class="bottom clearfix">
-                <p>price</p>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
-        <el-col :span="6">
-          <el-card shadow="hover" :body-style="{ padding: '0px' }">
-            <img src='../../assets/timg.jpg' class="image">
-            <div style="padding: 14px;">
-              <span>车型</span>
-              <div class="bottom clearfix">
-                <p>price</p>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
-        <el-col :span="6">
-          <el-card shadow="hover" :body-style="{ padding: '0px' }">
-            <img src='../../assets/timg.jpg' class="image">
-            <div style="padding: 14px;">
-              <span>车型</span>
-              <div class="bottom clearfix">
-                <p>price</p>
+                <p>{{item.price}}</p>
               </div>
             </div>
           </el-card>
         </el-col>
       </el-row>
-      <el-row :gutter="20">
+      <!-- <el-row :gutter="20">
         <el-col :span="6">
           <el-card shadow="hover" :body-style="{ padding: '0px' }">
             <img src='../../assets/timg.jpg' class="image">
@@ -109,7 +75,7 @@
             </div>
           </el-card>
         </el-col>
-      </el-row>
+      </el-row> -->
     </div>
   </div>
 </template>
@@ -125,9 +91,28 @@ export default {
         {src_img:require('../../assets/car4.jpg')},
         {src_img:require('../../assets/car5.jpg')},
       ],
+      items: [
+        {id:1,src_img:require('../../assets/timg.jpg'),type:"宝马",price:100000},
+        {id:2,src_img:require('../../assets/timg.jpg'),type:"奔驰",price:200000},
+        {id:3,src_img:require('../../assets/timg.jpg'),type:"奥迪",price:300000},
+        {id:4,src_img:require('../../assets/timg.jpg'),type:"奥托",price:50000},
+        {id:5,src_img:require('../../assets/timg.jpg'),type:"宝马",price:100000},
+        {id:6,src_img:require('../../assets/timg.jpg'),type:"奔驰",price:200000},
+        {id:7,src_img:require('../../assets/timg.jpg'),type:"奥迪",price:300000},
+        {id:8,src_img:require('../../assets/timg.jpg'),type:"奥托",price:50000},
+      ],
       currentDate: new Date()
     };
-  }
+  },
+  // created () {
+  //   this.$axios.get('')
+  //   .then(function(response){
+
+  //   })
+  //   .catch(function(error) {
+
+  //   })
+  // }
 }
 </script>
 

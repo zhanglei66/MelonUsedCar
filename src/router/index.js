@@ -1,14 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import userLogin from '@/components/user/login'
+import register from '@/components/user/register'
 import userhead from '@/components/user/head'
 import homepage from '@/components/user/homepage'
 import buycar from '@/components/user/buycar'
 import details from '@/components/user/details'
-
-import sellcarform1 from '@/components/user/sellcarform1'
-import sellcarform2 from '@/components/user/sellcarform2'
-import sellcarform3 from '@/components/user/sellcarform3'
+import personcenter from '@/components/user/personcenter'
+import sellcarform from '@/components/user/sellcarform'
 import adminHome from '@/components/admin/home'
 import adminHead from '@/components/admin/head'
 
@@ -32,6 +31,11 @@ export default new Router({
           component: userLogin,
         },
         {
+          path:'register',
+          name: 'register',
+          component: register,
+        },
+        {
           path: 'buycar',
           name: 'buycar',
           component: buycar,
@@ -42,19 +46,14 @@ export default new Router({
           component: details,
         },
         {
-          path: 'sellcarform1',
-          name: 'sellcarform1',
-          component: sellcarform1
+          path: 'sellcarform',
+          name: 'sellcarform',
+          component: sellcarform
         },
         {
-          path: 'sellcarform2',
-          name: 'sellcarform2',
-          component: sellcarform2
-        },
-        {
-          path: 'sellcarform3',
-          name: 'sellcarform3',
-          component: sellcarform3
+          path: 'personcenter',
+          name: 'personcenter',
+          component: personcenter
         }
       ]
     }, 

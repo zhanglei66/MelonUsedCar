@@ -1,9 +1,9 @@
 <template>
     <div id="bck">
         <transition name="bounce">
-            <el-card class="box-card" v-if="show">
+            <el-card class="box-card" v-if="show" style="margin-top:50px;">
                 <div slot="header" class="clearfix">
-                    <span>offer二手车</span>
+                    <span>登陆</span>
                 </div>
                 <div>
                     <div>
@@ -24,12 +24,12 @@
                         <el-button class="btn" id="btn_login" @click="login()" type="primary" plain>登陆</el-button>
                     </div>
                     <div>
-                        <el-button class="btn" id="btn_signin" type="success" plain>注册</el-button>
+                        <el-button class="btn" id="btn_signin" type="success" @click="register" plain>注册</el-button>
                     </div>
                 </div>
             </el-card>
         </transition>
-        <el-button id="btn_transition" @click="show = !show" style="display:none">Click Me</el-button>
+        <el-button id="btn_transition" @click="show = !show ;" style="display:none">Click Me</el-button>
     </div>
 </template>
 
@@ -57,8 +57,12 @@
                 .catch(function(error) {
                     console.log("error");
                 })
+            },
+            register: function() {
+                this.$router.push("/user/register");
             }
         }
+
         
     }
 </script>
@@ -72,7 +76,7 @@
         background-repeat: no-repeat;
 	    background-size: 100%;
         position: fixed;
-        z-index: -1;
+        
     }
     .box-card {
         margin-left: 900px;
