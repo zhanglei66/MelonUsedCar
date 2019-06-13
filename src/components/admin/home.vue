@@ -6,11 +6,9 @@
         <div id="reviewChart" class="image" style="height:400px"/>
           <div style="padding: 14px;">
             <div class="bottom clearfix">
-              <el-badge :value="1" class="item" type="primary">
                 <router-link :to="{path:'/admin/reviewCenter', query:{status: 0}}">
                   <el-button type="danger" class="button">转到未审核</el-button>
                 </router-link>
-              </el-badge>
               <router-link :to="{path:'/admin/reviewCenter', query:{status: 1}}">
                 <el-button type="success" class="button">转到已审核</el-button>
               </router-link>
@@ -115,6 +113,7 @@ export default {
     }
   },
   async mounted(){
+    console.log(this.reviewArr)
     this.orderData = (await axios('/order/findByStatus', {
       params: {
         status: 4
