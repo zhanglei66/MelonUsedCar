@@ -81,6 +81,7 @@
 </template>
 
 <script>
+window.mark = 0;
 export default {
   data() {
     return {
@@ -104,15 +105,22 @@ export default {
       currentDate: new Date()
     };
   },
-  // created () {
-  //   this.$axios.get('')
-  //   .then(function(response){
-
-  //   })
-  //   .catch(function(error) {
-
-  //   })
-  // }
+  created () {
+        var buycar_params = new URLSearchParams()
+        buycar_params.append('page',1);
+        this.$axios({
+          method:'post',
+          url:'http://39.108.160.89:8091/es/filtrCar',
+          data:buycar_params
+       })
+        .then((response) => {
+          console.log(response.data.data)
+          this.items = response.data.data
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
+    }
 }
 </script>
 

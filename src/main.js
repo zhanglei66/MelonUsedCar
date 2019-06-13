@@ -8,8 +8,8 @@ import echarts from 'echarts'
 import router from './router'
 import axios from 'axios'
 
-import './mock/index'
-
+axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8;'
+axios.defaults.withCredentials = true
 Vue.prototype.$echatrts = echarts
 Vue.config.productionTip = false
 Vue.use(ElementUI)

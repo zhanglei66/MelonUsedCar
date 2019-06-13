@@ -6,65 +6,60 @@
           <div style="width:460px; margin:0 auto 0 auto;">
             <el-form
               ref="form"
-              :model="form"
               label-width="80px"
             >
-              <el-form-item label="车牌">
-                <el-input v-model="form.carnum"></el-input>
+              <el-form-item label="车牌">  
+                <el-input v-model="carnum" placeholder="车牌"></el-input>
               </el-form-item>
               <el-form-item label="车型">
                 <el-row>
-                  <el-col :span="12">
-                    <el-select
+                  <el-col :span="24">
+                    <el-input v-model="carmodel"></el-input>
+                    <!-- <el-select
                       v-model="form.carmodel1"
                       placeholder="品牌"
                     >
                       <el-option
-                        label="区域一"
+                        label="宝马"
                         value="宝马"
                       ></el-option>
                       <el-option
-                        label="区域二"
+                        label="奔驰"
                         value="奔驰"
                       ></el-option>
-                    </el-select>
-                  </el-col>
-                  <el-col :span="12">
-                    <el-select
-                      v-model="form.carmodel2"
-                      placeholder="车系"
-                    >
                       <el-option
-                        label="区域一"
-                        value="宝马"
+                        label="奥迪"
+                        value="奥迪"
                       ></el-option>
                       <el-option
-                        label="区域二"
-                        value="奔驰"
+                        label="现代"
+                        value="现代"
                       ></el-option>
-                    </el-select>
+                    </el-select> -->
                   </el-col>
+                  
                 </el-row>
               </el-form-item>
               <el-form-item label="上牌时间">
-                <el-date-picker
+                <!-- <el-date-picker
                   type="date"
                   placeholder="选择日期"
-                  v-model="form.cardate"
+                  v-model="cardate"
                   style="width: 100%;"
-                ></el-date-picker>
+                ></el-date-picker> -->
+                <el-input v-model="cardate"></el-input>
               </el-form-item>
               <el-form-item label="行驶里程">
-                <el-input v-model="form.cardistance"></el-input>
+                <el-input v-model="cardistance"></el-input>
               </el-form-item>
               <el-form-item label="排量">
-                <el-input v-model="form.cardisplacement"></el-input>
+                <el-input v-model="cardisplacement"></el-input>
               </el-form-item>
               <el-form-item label="二手价">
-                <el-input v-model="form.carprice"></el-input>
+                <el-input v-model="carprice"></el-input>
               </el-form-item>
               <el-form-item label="联系电话">
-                <el-input v-model="form.telphone"></el-input>
+                <el-input v-model="telphone"></el-input>
               </el-form-item>
             </el-form>
             <!-- <div style="text-align:center">
@@ -76,7 +71,6 @@
           <div style="width:560px; margin:0 auto;">
             <el-form
               ref="form"
-              :model="form"
               label-width="80px"
             >
               <el-form-item label="验车时间">
@@ -105,7 +99,7 @@
                 </el-radio-group>
               </el-form-item>
               <el-form-item label="验车地址">
-                <el-input v-model="form.address"></el-input>
+                <el-input v-model="address"></el-input>
               </el-form-item>
             </el-form>
 
@@ -143,29 +137,21 @@ var imageUrl=[];
 export default {
   data() {
     return {
-      form: {
         carnum: "",
-        carmodel1: "",
-        carmodel2: "",
+        carmodel: "",
         cardate: "",
+        cardistance: "",
         cardisplacement: "",
         carprice: "",
         telphone: "",
-        address: ""
-      },
-      dialogImageUrl: "",
-      dialogVisible: false,
-      appointment_time: "",
-      active: 0
+        address: "",
+        dialogImageUrl: "",
+        dialogVisible: false,
+        appointment_time: "",
+        active: 0
     };
   },
   methods: {
-    next() {
-      if (this.active++ > 2) this.active = 0;
-      this.$emit("myFun", this.form);
-      console.log(this.form);
-      this.$router.push("/user/sellcarform2");
-    },
     handleRemove(file, fileList) {
       console.log(file, fileList);
     },
@@ -175,18 +161,31 @@ export default {
     },
     handleAvatarSuccess: function(response, file, fileList) {
       console.log("success");
-      imageUrl+=response.data.imageUrl;
-      console.log(response.data.imageUrl);
+      imageUrl.push(response.data.imageUrl);
+      console.log(imageUrl);
     },
     submit: function() {
-      console.log(this.form,imageUrl,this.appointment_time);
-      // this.$axios.get('')
-      // .then(function(response){
-
-      // })
-      // .catch(function(error) {
-
-      // })
+        var sellcar_params = new URLSearchParams()
+        sellcar_params.append('brand', this.carnum)
+        sellcar_params.append('model', this.carmodel)
+        sellcar_params.append('cardTime', this.cardate) 
+        sellcar_params.append('displacement', this.cardisplacement)
+        sellcar_params.append('oldPrice', this.carprice)
+        sellcar_params.append('phone', this.telphone)
+        sellcar_params.append('faceImage', imageUrl[0])
+        sellcar_params.append('otherImage', imageUrl[1])
+        sellcar_params.append('area', this.address)
+        sellcar_params.append('mileage', this.cardistance)
+        sellcar_params.append('tokenId',localStorage.getItem('tokenId'))
+        console.log(localStorage.getItem('tokenId'))
+        this.$axios.post('http://39.108.160.89:8091/car/applySellCar',sellcar_params,
+        )
+        .then(function(response){
+          console.log("success")
+        })
+        .catch(function(error) {
+          console.log("error")
+        })
     }
   } 
 };

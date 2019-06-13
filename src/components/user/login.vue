@@ -1,7 +1,7 @@
 <template>
     <div id="bck">
         <transition name="bounce">
-            <el-card class="box-card" v-if="show" style="margin-top:50px;">
+            <el-card class="box-card" v-if="show" style="margin-top:50px;"  v-loading="loading">
                 <div slot="header" class="clearfix">
                     <span>登陆</span>
                 </div>
@@ -10,16 +10,17 @@
                         <el-input prefix-icon="" style="width:90%" id="account" v-model="input_account" placeholder="请输入账号"></el-input>
                     </div>
                     <div>
-                        <el-input id="password" style="margin-top: 20px; width: 90%;" placeholder="请输入密码" v-model="input_password"></el-input>
+                        <el-input type="password" id="password" style="margin-top: 20px; width: 90%;" placeholder="请输入密码" v-model="input_password"></el-input>
                     </div>
-                    <div id="verification">
+                    <div id="verification" style="display:none">
                         <el-col :span="6">
-                            <img src="" alt="" style="width:20%">
+                            <img src="http://222.24.63.59:9067/getcode" alt="" style="width:100%">
                         </el-col>
                         <el-col :span="18">
                             <el-input v-model="verification" placeholder="请输入验证码"></el-input>
                         </el-col>
                     </div>
+
                     <div>
                         <el-button class="btn" id="btn_login" @click="login()" type="primary" plain>登陆</el-button>
                     </div>
@@ -41,7 +42,8 @@
                 input_account: '',
                 input_password: '',
                 verification:'',
-                show:false
+                show:false,
+                loading: false
             }
         },
         mounted(){
@@ -49,17 +51,27 @@
         },
         methods: {
             login: function() {
-                this.$axios.get('/login/1/1')
+                var params = new URLSearchParams()
+                params.append('email', this.input_account)
+                params.append('password', this.input_password) 
+                // params.append('revix', this.verification)
+                this.$axios({
+                    method: 'post',
+                    url: 'http://39.108.160.89:8081/user/login',
+                    data: params
+                })
                 .then(function(response) {
-                    console.log("success");
-                    console.log(response.data.data.name)
+                    console.log(response.data.data)
+                    localStorage.setItem("tokenId", response.data.data);
                 })
                 .catch(function(error) {
-                    console.log("error");
                 })
             },
             register: function() {
                 this.$router.push("/user/register");
+            },
+            jump : function() {
+                this.$router.push("/user/homepage");
             }
         }
 
@@ -75,8 +87,7 @@
         background-image: url("../../assets/car.gif");
         background-repeat: no-repeat;
 	    background-size: 100%;
-        position: fixed;
-        
+        position: fixed;  
     }
     .box-card {
         margin-left: 900px;

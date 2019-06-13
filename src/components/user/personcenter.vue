@@ -8,10 +8,10 @@
           @open="handleOpen"
           @close="handleClose"
         >
-
+        
           <el-menu-item
             index="1"
-            @click="change_maiche"
+            @click="change_maiche() ; mymaiche()"
           >
             <i class="el-icon-location"></i>
             <span slot="title">我的卖车</span>
@@ -19,14 +19,14 @@
 
           <el-menu-item
             index="2"
-            @click="change_yuyue"
+            @click="change_yuyue() ; myyuyue()"
           >
             <i class="el-icon-menu"></i>
             <span slot="title">我的预约</span>
           </el-menu-item>
           <el-menu-item
             index="3"
-            @click="change_shoucang"
+            @click="change_shoucang() ; myshoucang()"
           >
             <i class="el-icon-document"></i>
             <span slot="title">我的收藏</span>
@@ -45,13 +45,13 @@
                 :body-style="{ padding: '0px' }"
               >
                 <img
-                  :src='site.src_img'
+                  :src='site.faceImage'
                   class="image"
                 >
                 <div style="padding: 14px;">
-                  <span>{{site.type}}</span>
+                  <span>{{site.brand}}</span>
                   <div class="bottom clearfix">
-                    <p>{{site.price}}</p>
+                    <p>{{site.oldPrice}}</p>
                   </div>
                 </div>
               </el-card>
@@ -65,19 +65,19 @@
       >
         <el-card class="box-card">
           <el-row :gutter="20">
-            <el-col :span="12" v-for="site in sites" :key="site.id">
+            <el-col :span="12" v-for="ab in abs" :key="ab.id">
               <el-card
                 shadow="hover"
                 :body-style="{ padding: '0px' }"
               >
                 <img
-                  :src='site.src_img'
+                  :src='ab.faceImage'
                   class="image"
                 >
                 <div style="padding: 14px;">
-                  <span>{{site.type}}</span>
+                  <span>{{ab.brand}}</span>
                   <div class="bottom clearfix">
-                    <p>{{site.price}}</p>
+                    <p>{{ab.oldPrice}}</p>
                   </div>
                 </div>
               </el-card>
@@ -87,61 +87,28 @@
       </el-col>
       <el-col
         :span="18"
-        v-if="shoucang"
+        v-if="shoucang"  
       >
         <el-card class="box-card">
           <el-row :gutter="20">
-            <el-col :span="12">
+            <el-col :span="12" v-for="item in items" :key="item.esCar.carId">
               <el-card
                 shadow="hover"
                 :body-style="{ padding: '0px' }"
               >
                 <img
-                  src='../../assets/timg.jpg'
+                  :src='item.esCar.face_image'
                   class="image"
                 >
                 <div style="padding: 14px;">
-                  <span>车型</span>
+                  <span>品牌--{{item.esCar.brand}}</span><span style="margin-left:30px">价格--{{item.esCar.old_price}}</span>
                   <div class="bottom clearfix">
-                    <p>price</p>
+                    <el-button @click="del_collect(item.escar.carId)">取消收藏</el-button>
                   </div>
                 </div>
               </el-card>
             </el-col>
-            <el-col :span="12">
-              <el-card
-                shadow="hover"
-                :body-style="{ padding: '0px' }"
-              >
-                <img
-                  src='../../assets/timg.jpg'
-                  class="image"
-                >
-                <div style="padding: 14px;">
-                  <span>车型</span>
-                  <div class="bottom clearfix">
-                    <p>price</p>
-                  </div>
-                </div>
-              </el-card>
-            </el-col>
-            <el-col :span="12">
-              <el-card
-                shadow="hover"
-                :body-style="{ padding: '0px' }"
-              >
-                <img
-                  src='../../assets/timg.jpg'
-                  class="image"
-                >
-                <div style="padding: 14px;">
-                  <span>车型</span>
-                  <div class="bottom clearfix">
-                    <p>price</p>
-                  </div>
-                </div>
-              </el-card>
-            </el-col>
+            
           </el-row>
         </el-card>
       </el-col>
@@ -154,13 +121,31 @@ export default {
   data() {
     return {
       sites: [
-        {id:1,src_img:require('../../assets/timg.jpg'),type:"宝马",price:100000},
-        {id:2,src_img:require('../../assets/timg.jpg'),type:"奔驰",price:200000},
+        
+      ],
+      abs:[
+
+      ],
+      items: [
+
       ],
       maiche: true,
       yuyue: false,
       shoucang: false
     };
+  },
+  created() {
+      var params_maiche = new URLSearchParams()
+      params_maiche.append('tokenId', localStorage.getItem('tokenId'))
+      console.log(localStorage.getItem('tokenId'));
+      this.$axios.post('http://39.108.160.89:8091/car/findApplyBYuserId',params_maiche)
+        .then((response)=> {
+          console.log(response.data.data);
+          this.sites = response.data.data;
+        })
+        .catch(function(error) {
+          
+        })
   },
   methods: {
     handleOpen(key, keyPath) {
@@ -184,33 +169,58 @@ export default {
       this.yuyue = false;
       this.shoucang = true;
     },
-    // mymaiche: function() {
-    //   this.$axios.get('')
-    //     .then(function(response) {
+    mymaiche: function() {
+      var params_maiche = new URLSearchParams()
+      params_maiche.append('tokenId', localStorage.getItem('tokenId'))
+      console.log(localStorage.getItem('tokenId'));
+      this.$axios.post('http://39.108.160.89:8091/car/findApplyBYuserId',params_maiche)
+        .then((response)=> {
+          console.log(response.data.data);
+          this.sites = response.data.data;
+        })
+        .catch(function(error) {
           
-    //     })
-    //     .catch(function(error) {
+        })
+    },
+    myyuyue: function() {
+      var params_yuyue = new URLSearchParams()
+      params_yuyue.append('tokenId', localStorage.getItem('tokenId'))
+      console.log(localStorage.getItem('tokenId'))
+      this.$axios.post('http://39.108.160.89:8091/order/findByUserId',params_yuyue)
+        .then((response)=> {
+          console.log(response.data.data)
+          this.abs = response.data.data
+        })
+        .catch(function(error) {
           
-    //     })
-    // },
-    // myyuyue: function() {
-    //   this.$axios.get('')
-    //     .then(function(response) {
+        })
+    },
+    myshoucang: function() {
+      var params_shoucang = new URLSearchParams()
+      params_shoucang.append('tokenId', localStorage.getItem('tokenId'))
+      console.log(localStorage.getItem('tokenId'))
+      this.$axios.post('http://39.108.160.89:8091/collect/findCollection',params_shoucang)
+        .then((response)=> {
+          console.log(response.data.data)
+          this.items = response.data.data;
+        })
+        .catch(function(error) {
           
-    //     })
-    //     .catch(function(error) {
+        })
+    },
+    del_collect(id) {
+      var del_shoucang = new URLSearchParams()
+      del_shoucang.append('carId', id)
+      del_shoucang.append('tokenId', localStorage.getItem('tokenId'))
+      console.log(localStorage.getItem('tokenId'))
+      this.$axios.post('http://39.108.160.89:8091/collect/deleteCollection',del_shoucang)
+        .then((response)=> {
+          console.log(response)
+        })
+        .catch(function(error) {
           
-    //     })
-    // },
-    // myshoucang: function() {
-    //   this.$axios.get('')
-    //     .then(function(response) {
-          
-    //     })
-    //     .catch(function(error) {
-          
-    //     })
-    // }
+        })
+    }
   }
 };
 </script>

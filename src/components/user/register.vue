@@ -10,7 +10,7 @@
                         <el-input prefix-icon="" style="width:90%" id="account" v-model="input_account" placeholder="请输入邮箱"></el-input>
                     </div>
                     <div>
-                        <el-input id="password" style="margin-top: 20px; width: 90%;" placeholder="请输入密码" v-model="input_password"></el-input>
+                        <el-input type="password" id="password" style="margin-top: 20px; width: 90%;" placeholder="请输入密码" v-model="input_password"></el-input>
                     </div>
                     <div>
                         <el-input id="name" style="margin-top: 20px; width: 90%;" placeholder="请输入用户名" v-model="input_name"></el-input>
@@ -20,14 +20,14 @@
                     </div>
                     <div id="verification">
                         <el-col :span="6">
-                            <img src="" alt="" style="width:20%">
+                            <img src="http://39.108.160.89:8081/getcode" alt="" style="width:100%">
                         </el-col>
                         <el-col :span="18">
                             <el-input v-model="verification" placeholder="请输入验证码"></el-input>
                         </el-col>
                     </div>
                     <div>
-                        <el-button class="btn" id="btn_signin" type="success" @click="open" plain>注册</el-button>
+                        <el-button class="btn" id="btn_signin" type="success" @click="signin() ; open()" plain>注册</el-button>
                     </div>
                 </div>
             </el-card>
@@ -46,32 +46,47 @@
                 input_name: '',
                 input_number: '',
                 verification:'',
-                show:false
+                show:false,
+                value:""
             }
         },
         mounted(){
             document.getElementById("btn_transition").click();
+            document.getElementsByClassName("jihuoma").onclick=function() {
+                console.log(this.value);
+            };
         },
         methods: {
             signin: function() {
-                this.$axios.get('/login/1/1',{
-                    params: {
-                        
-                    }
-                })
+                
+                var params = new URLSearchParams()
+                params.append('email', this.input_account)
+                params.append('password', this.input_password) 
+                params.append('username', this.input_name)
+                params.append('phone', this.input_number)
+                params.append('revix', this.verification)
+                this.$axios.post('http://39.108.160.89:8081/user/registerservice',params)
                 .then(function(response) {
                     console.log("success");
-                    console.log(response.data.data.name)
+                   
                 })
                 .catch(function(error) {
-                    console.log("error");
+                    console.log(error);
                 })
             },
             open() {
                 this.$prompt('请输入激活码', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
-                });
+                confirmButtonClass:"jihuoma"
+                }).then(({value}) =>
+                    {   
+                        
+                        this.$axios.post('http://39.108.160.89:8081/user/mail/'+this.value)
+                        .then(function(response) {
+                            console.log("zhucechenggong")
+                        })
+                    });
             }
 
         }

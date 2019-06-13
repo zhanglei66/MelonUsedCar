@@ -25,15 +25,15 @@
 							<h1>车主报价：</h1>
 						</div>
 						<div style="margin-top:60px;">
-							<el-button type="success">预约</el-button>
-							<el-button type="primary">收藏</el-button>
+							<el-button type="success" @click="yuyue">预约</el-button>
+							<el-button @click="collect" type="primary">收藏</el-button>
 						</div>
 					</div>
 				</el-col>
             </el-row>
         </div>
 		<div style="width:80%; margin:30px auto 0 auto">
-			<el-row :gutter="20">
+			<el-row :gutter="20" >
 				<el-col :span="8">
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
@@ -42,35 +42,40 @@
 						<div>
 							<table border="1">
 								<tr>
-									<th>证件品牌型号</th>
-									
-								</tr>
-								<tr>
 									<th>厂商</th>
+									<td>{{items.esMoreCar.firm}}</td>
 								</tr>
 								<tr>
 									<th>级别</th>
+									<td>{{items.esMoreCar.level}}</td>
 								</tr>
 								<tr>
 									<th>发动机</th>
+									<td>{{items.esMoreCar.engine}}</td>
 								</tr>
 								<tr>
 									<th>变速箱</th>
+									<td>{{items.esCar.gearbox}}</td>
 								</tr>
 								<tr>
 									<th>车身结构</th>
+									<td>{{items.esMoreCar.structure}}</td>
 								</tr>
 								<tr>
 									<th>长*宽*高</th>
+									<td>{{items.esMoreCar.length}}-{{items.esMoreCar.width}}-{{items.esMoreCar.height}}</td>
 								</tr>
 								<tr>
 									<th>轴距</th>
+									<td>{{items.esMoreCar.wheelbase}}</td>
 								</tr>
 								<tr>
 									<th>行李箱容积</th>
+									<td>{{items.esMoreCar.volume_min}}-{{items.esMoreCar.volume_max}}</td>
 								</tr>
 								<tr>
 									<th>整备质量</th>
+									<td>{{items.esMoreCar.weight}}</td>
 								</tr>
 							</table>
 						</div>
@@ -85,7 +90,7 @@
 							<table border="1">
 								<tr>
 									<th>排量</th>
-									
+									<td>{{items.esCar.displacement}}</td>
 								</tr>
 								<tr>
 									<th>进气形式</th>
@@ -111,7 +116,9 @@
 								<tr>
 									<th>排放标准</th>
 								</tr>
-								
+								<tr>
+									<th>空</th>
+								</tr>
 							</table>
 						</div>
 					</el-card>
@@ -125,7 +132,6 @@
 							<table border="1">
 								<tr>
 									<th>驱动方式</th>
-									
 								</tr>
 								<tr>
 									<th>助力类型</th>
@@ -151,7 +157,9 @@
 								<tr>
 									<th>后轮胎规格</th>
 								</tr>
-								
+								<tr>
+									<th>空</th>
+								</tr>
 							</table>
 						</div>
 					</el-card>
@@ -160,6 +168,72 @@
 		</div>
     </div>
 </template>
+
+<script>
+export default {
+	data() {
+		return {
+			items: [
+			
+			]
+		};
+	},
+	methods: {
+		collect() {
+			var collect_params = new URLSearchParams()
+			collect_params.append('carId',this.items.esCar.carId);
+			collect_params.append('tokenId',localStorage.getItem('tokenId'));
+			this.$axios({
+				method:'post',
+				url:'http://39.108.160.89:8091/collect/addCollection',
+				data:collect_params
+				})
+				.then((response) => {
+					console.log(response)
+					
+				})
+				.catch(function(error) {
+				console.log(error)
+			})
+		},
+		yuyue() {
+			var collect_params = new URLSearchParams()
+			collect_params.append('carId',this.items.esCar.carId);
+			collect_params.append('tokenId',localStorage.getItem('tokenId'));
+			this.$axios({
+				method:'post',
+				url:'http://39.108.160.89:8091/collect/addCollection',
+				data:collect_params
+				})
+				.then((response) => {
+					console.log(response)
+					
+				})
+				.catch(function(error) {
+				console.log(error)
+			})
+		}
+	},
+	created () {
+		var detail_params = new URLSearchParams()
+        detail_params.append('carId',"6c5018e7-6b92-4274-b401-9dee63b5d3e0");
+        this.$axios({
+          method:'post',
+          url:'http://39.108.160.89:8091/es/findByCarId',
+          data:detail_params
+       	})
+        .then((response) => {
+          console.log(response.data.data)
+		  this.items = response.data.data
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
+	}
+	
+}
+</script>
+
 
 <style scoped>
 	.el-carousel__item h3 {

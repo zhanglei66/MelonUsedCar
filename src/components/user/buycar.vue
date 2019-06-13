@@ -3,19 +3,16 @@
         <div style="width:70%; margin:20px auto 0 auto;">   
             <el-card class="box-card">
                 <div class="text item">
-                    <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
                     <span>品牌</span>
                     <el-divider direction="vertical"></el-divider>
-                    <el-button class="btn" type="text">宝马</el-button>
-                    <el-button class="btn" type="text">奔驰</el-button>
-                    <el-button class="btn" type="text">奥迪</el-button>
-                    <el-button class="btn" type="text">奥拓</el-button>
-                    <el-button class="btn" type="text">现代</el-button>
-                    <el-divider class="line"></el-divider>
-                </div>
-                <div class="text item">
-                    <span>车系</span>
-                    <el-divider direction="vertical"></el-divider>
+                    <el-button class="btn" @click="check('宝马')" type="text">宝马</el-button>
+                    <el-button class="btn" @click="check('奔驰')" type="text">奔驰</el-button>
+                    <el-button class="btn" @click="check('奥迪')" type="text">奥迪</el-button>
+                    <el-button class="btn" @click="check('现代')" type="text">现代</el-button>
+                    <el-button class="btn" @click="check('大众')" type="text">大众</el-button>
+                    <el-button class="btn" @click="check('丰田')" type="text">丰田</el-button>
+                    <el-button class="btn" @click="check('雪佛兰')" type="text">雪佛兰</el-button>
+                    <el-button class="btn" @click="check('比亚迪')" type="text">比亚迪</el-button>
                     <el-divider class="line"></el-divider>
                 </div>
                 <div class="text item">
@@ -37,155 +34,15 @@
                 <h2>全部</h2>
             </div>
             <el-row :gutter="20">
-                <el-col :span="6">
-                <el-card :body-style="{ padding: '0px' }">
-                    <img src="../../assets/timg.jpg" class="image">
-                    <div style="padding: 14px;">
-                    <span>车型</span>
-                    <div class="bottom clearfix">
-                        <p>上牌时间</p>
-                        <p>价格</p>
-                        
-                    </div>
-                    </div>
-                </el-card>
+                <el-col :span="6" v-for="item in items" :key="item.id">
+                    <el-card :body-style="{ padding: '0px' }" >
+                        <img :src="item.face_image" class="image">
+                        <div style="padding: 14px;">
+                            <span>车系-{{item.brand}}</span> <span>价格-{{item.old_price}}</span>
+                        </div>
+                    </el-card>
                 </el-col>
-                <el-col :span="6">
-                <el-card :body-style="{ padding: '0px' }">
-                    <img src="../../assets/timg.jpg" class="image">
-                    <div style="padding: 14px;">
-                    <span>车型</span>
-                    <div class="bottom clearfix">
-                        <p>上牌时间</p>
-                        <p>价格</p>
-                    </div>
-                    </div>
-                </el-card>
-                </el-col>
-                <el-col :span="6">
-                <el-card :body-style="{ padding: '0px' }">
-                    <img src="../../assets/timg.jpg" class="image">
-                    <div style="padding: 14px;">
-                    <span>车型</span>
-                    <div class="bottom clearfix">
-                        <p>上牌时间</p>
-                        <p>价格</p>
-                    </div>
-                    </div>
-                </el-card>
-                </el-col>
-                <el-col :span="6">
-                <el-card :body-style="{ padding: '0px' }">
-                    <img src="../../assets/timg.jpg" class="image">
-                    <div style="padding: 14px;">
-                    <span>车型</span>
-                    <div class="bottom clearfix">
-                        <p>上牌时间</p>
-                        <p>价格</p>
-                    </div>
-                    </div>
-                </el-card>
-                </el-col>
-            </el-row>
-            <el-row :gutter="20">
-                <el-col :span="6">
-                <el-card :body-style="{ padding: '0px' }">
-                    <img src="../../assets/timg.jpg" class="image">
-                    <div style="padding: 14px;">
-                    <span>车型</span>
-                    <div class="bottom clearfix">
-                        <p>上牌时间</p>
-                        <p>价格</p>
-                    </div>
-                    </div>
-                </el-card>
-                </el-col>
-                <el-col :span="6">
-                <el-card :body-style="{ padding: '0px' }">
-                    <img src="../../assets/timg.jpg" class="image">
-                    <div style="padding: 14px;">
-                    <span>车型</span>
-                    <div class="bottom clearfix">
-                        <p>上牌时间</p>
-                        <p>价格</p>
-                    </div>
-                    </div>
-                </el-card>
-                </el-col>
-                <el-col :span="6">
-                <el-card :body-style="{ padding: '0px' }">
-                    <img src="../../assets/timg.jpg" class="image">
-                    <div style="padding: 14px;">
-                    <span>车型</span>
-                    <div class="bottom clearfix">
-                        <p>上牌时间</p>
-                        <p>价格</p>
-                    </div>
-                    </div>
-                </el-card>
-                </el-col>
-                <el-col :span="6">
-                <el-card :body-style="{ padding: '0px' }">
-                    <img src="../../assets/timg.jpg" class="image">
-                    <div style="padding: 14px;">
-                    <span>车型</span>
-                    <div class="bottom clearfix">
-                        <p>上牌时间</p>
-                        <p>价格</p>
-                    </div>
-                    </div>
-                </el-card>
-                </el-col>
-            </el-row>
-            <el-row :gutter="20">
-                <el-col :span="6">
-                <el-card :body-style="{ padding: '0px' }">
-                    <img src="../../assets/timg.jpg" class="image">
-                    <div style="padding: 14px;">
-                    <span>车型</span>
-                    <div class="bottom clearfix">
-                        <p>上牌时间</p>
-                        <p>价格</p>
-                    </div>
-                    </div>
-                </el-card>
-                </el-col>
-                <el-col :span="6">
-                <el-card :body-style="{ padding: '0px' }">
-                    <img src="../../assets/timg.jpg" class="image">
-                    <div style="padding: 14px;">
-                    <span>车型</span>
-                    <div class="bottom clearfix">
-                        <p>上牌时间</p>
-                        <p>价格</p>
-                    </div>
-                    </div>
-                </el-card>
-                </el-col>
-                <el-col :span="6">
-                <el-card :body-style="{ padding: '0px' }">
-                    <img src="../../assets/timg.jpg" class="image">
-                    <div style="padding: 14px;">
-                    <span>车型</span>
-                    <div class="bottom clearfix">
-                        <p>上牌时间</p>
-                        <p>价格</p>
-                    </div>
-                    </div>
-                </el-card>
-                </el-col>
-                <el-col :span="6">
-                <el-card :body-style="{ padding: '0px' }">
-                    <img src="../../assets/timg.jpg" class="image">
-                    <div style="padding: 14px;">
-                    <span>车型</span>
-                    <div class="bottom clearfix">
-                        <p>上牌时间</p>
-                        <p>价格</p>
-                    </div>
-                    </div>
-                </el-card>
-                </el-col>
+                
             </el-row>
         </div>
         <div id="page">
@@ -204,13 +61,48 @@
 export default {
     data() {
       return {
-        activeName: '1'
+        activeName: '1',
+        items: [
+        
+        ]
       };
     },
     methods: {
-      
+        check(val) {
+            var check_params = new URLSearchParams()
+            check_params.append('page',1);
+            check_params.append('brand',val);
+            this.$axios({
+                method:'post',
+                url:'http://39.108.160.89:8091/es/filtrCar',
+                data:check_params
+                })
+                .then((response) => {
+                    console.log(response.data.data)
+                    this.items = response.data.data
+                })
+                .catch(function(error) {
+                console.log(error)
+            })
+        }
+    },
+    created () {
+        var buycar_params = new URLSearchParams()
+        buycar_params.append('page',1);
+        this.$axios({
+          method:'post',
+          url:'http://39.108.160.89:8091/es/filtrCar',
+          data:buycar_params
+       })
+        .then((response) => {
+          console.log(response.data.data)
+          this.items = response.data.data
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
     }
-  }
+}
 </script>
 
 <style scoped>
