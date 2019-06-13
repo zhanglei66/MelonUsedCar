@@ -9,10 +9,11 @@
       active-text-color="#ffd04b"
       router>
       <el-menu-item index="/admin/home">首页</el-menu-item>
-      <el-menu-item index="1">审核中心</el-menu-item>
+      <el-menu-item index="/admin/reviewCenter">审核中心</el-menu-item>
       <el-menu-item index="/admin/dataCenter">数据中心</el-menu-item>
-      <el-menu-item index="3">人员中心</el-menu-item>
-      <el-menu-item index="4">订单管理</el-menu-item>
+      <el-menu-item index="/admin/carCenter">车库中心</el-menu-item>
+      <el-menu-item index="/admin/orderCenter">订单中心</el-menu-item>
+      <el-menu-item style="float:right">退出登录</el-menu-item>
     </el-menu>
     <router-view></router-view>
   </div>
@@ -29,9 +30,7 @@ export default {
 
   },
   methods:{
-    changeActiveIndex (value) {
-      this.activeIndex = value
-    },
+    
   }
 }
 </script>
