@@ -21,7 +21,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/admin'
+      redirect: '/user'
     },
     {
       path: '/user',
