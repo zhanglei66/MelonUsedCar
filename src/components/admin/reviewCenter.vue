@@ -679,7 +679,7 @@ export default {
       let imgArr = []
       imgArr.push(v.faceImage)
       if (v.oldImage) {
-        imgArr.push(...v.otherImage.slice(','))
+        imgArr.push(...v.otherImage.splice(','))
       }
       this.tableData[i].faceImage = imgArr
     }) 

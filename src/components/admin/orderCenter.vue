@@ -122,11 +122,11 @@ export default {
   },
   async mounted () {
     let orderObj = {}, orderArr = []
-    this.tableData = (await axios('/order/findByStatus', {
-      params: {
-        status: 4
-      }
-    })).data.data
+    // this.tableData = (await axios('/order/findByStatus', {
+    //   params: {
+    //     status: 4
+    //   }
+    // })).data.data
     this.tableData.forEach((value) => {
       if (orderObj[value.esu.area]) {
         orderObj[value.esu.area] ++
